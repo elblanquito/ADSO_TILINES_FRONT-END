@@ -7,9 +7,9 @@
 
     <div class="tittle">BIENVENIDO</div>
     <p class="subtittle">Por favor ingrese sus datos de usuario para continuar, ¡te esperamos!</p>
-    <input type="text" placeholder="Nombre de usuario">
+    <input class="input" type="text" placeholder="Nombre de usuario">
     <div class="contrasenacont">
-      <input type="text" placeholder="Contraseña">
+      <input class="input" type="text" placeholder="Contraseña">
       <p class="contrasenaayuda">¿olvidaste tu contraseña?</p>
     </div>
     <router-link to="/home" class="opcioncont">
@@ -22,6 +22,7 @@
 <!-- scoped sirve para evitar que los estilos afecte a los
 demas componentes  -->
 <style scoped>
+
   *{
     margin: 0;
     padding: 0;
@@ -33,20 +34,31 @@ demas componentes  -->
   .tittle{
     font-size: 128px;
     font-weight: bolder;
+    color: #3F497F;
   }
 
   .subtittle{
     font-size: 28px;
     font-weight: bold;
-    color: primary;
+    color: #3F497F;
+  }
+
+  .input{
+
   }
   .opcion{
-    padding: 5px;
+    font-size: 50px;
+    font-weight: bolder;
+    padding: 10px 100px;
     margin: auto;
+    background-color: #3F497F;
+    color: white;
+    border-radius: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   
   .opcioncont{
-    margin: auto;
+    margin: 100px;
   }
 
 .olascont{
