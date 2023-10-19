@@ -5,7 +5,7 @@
 </template>
 
 <style scoped>
-*{
+/* *{
   margin: 0;
   padding: 0;
   font-size: large;
@@ -27,5 +27,5 @@
 
 .opcioncont{
   margin: auto;
-}
+} */
 </style>

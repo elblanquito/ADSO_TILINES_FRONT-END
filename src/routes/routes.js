@@ -7,9 +7,6 @@ import conductores from '../components/conductores.vue'
 import usuarios from '../components/usuarios.vue'
 
 import {createRouter, createWebHashHistory} from 'vue-router'
-import { Quasar}from 'quasar'
-import '@quasar/extras/material-icons/material-icons.css'
-import 'quasar/src/css/index.sass'
 
 const routes =[
     {path: '/', component:login},
