@@ -1,93 +1,73 @@
-<script setup>
-import { ref } from "vue";
+<template>
+    <q-layout view="hHh lpR fFf">
+        <q-header elevated class="bg-primary text-white">
+            <q-toolbar>
+                <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-const opciones = ["buses", "conductores", "rutas", "usuarios"]
-const ocultar = ref(true)
+                <q-toolbar-title>
+                    <q-avatar>
+                        <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+                    </q-avatar>
+                    Title
+                </q-toolbar-title>
+            </q-toolbar>
+        </q-header>
 
-const leftDrawerOpen = ref(false);
+        <q-drawer color="secondary" v-model="leftDrawerOpen" side="left" behavior="mobile" elevated>
+            <div class="q-pa-md q-gutter">
+                <div class="q-pa-md q-gutter-sm">
+                    <q-avatar color="orange-2" text-color="white" icon="face" style="font-size: 6em" />
+                </div>
+                <router-link to="/home" class="opcioncont" style="font-size: 2em">
+                    <q-btn no-caps align="left" color="secondary" icon-right="send" style="width: 95%">Cerrar Sesión </q-btn>
+                </router-link>
+                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
+                    <q-btn align="left" color="secondary" icon-right="send" label="CAMBIAR NOMBRE" style="width: 95%" />
+                </router-link>
+                <q-linear-progress :value="progress" class="q-mt-md" />
+                <router-link to="/home" class="opcioncont" style="font-size: 2em">
+                    <q-btn align="left" color="secondary" icon-right="send" label="Presupuesto" style="width: 95%" />
+                </router-link>
+                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
+                    <q-btn align="left" color="secondary" icon-right="send" label="Inventarios" style="width: 95%" />
+                </router-link>
+                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
+                    <q-btn align="left" color="secondary" icon-right="send" label="Pedidos" style="width: 95%" />
+                </router-link>
+                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
+                    <q-btn align="left" color="secondary" icon-right="send" label="Informes del sistema" style="width: 95%" />
+                </router-link>
+                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
+                    <q-btn align="left" color="secondary" icon-right="send" label="Utilidades del sistema" style="width: 95%" />
+                </router-link>
+                <q-linear-progress :value="progress" class="q-mt-md" />
 
-function toggleLeftDrawer() {
-    leftDrawerOpen.value = !leftDrawerOpen.value;
+            </div>
+        </q-drawer>
+
+        <q-page-container>
+            <router-view />
+        </q-page-container>
+
+    </q-layout>
+</template>
+<script>
+import { ref } from 'vue'
+
+export default {
+    setup() {
+        const leftDrawerOpen = ref(false)
+
+        return {
+            leftDrawerOpen,
+            toggleLeftDrawer() {
+                leftDrawerOpen.value = !leftDrawerOpen.value
+            }
+        }
+    }
 }
-
-const primeraMayuscula = (cadena) => cadena.charAt(0).toUpperCase() + cadena.slice(1)
-
 </script>
 
-
-<template>
-    <div>
-        <q-layout view="lHr lpR lFr">
-            <q-header elevated class="bg-primary text-white">
-                <q-toolbar>
-                    <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-
-                    <q-toolbar-title>
-                        <q-avatar>
-                            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
-                        </q-avatar>
-                        EMPRESA DE BUSES
-                    </q-toolbar-title>
-
-
-                </q-toolbar>
-            </q-header>
-
-            <q-drawer v-model="leftDrawerOpen" side="left" overlay behavior="mobile" bordered class="menudesplegable">
-                <div class="opcionescont">
-                    <p class="menutitle"> = menu desplegable = </p>
-                    <router-link :to="'/' + opcion" class="opcioncont" v-for="(opcion, i) in opciones" :key="i">
-                        <button class="opcion">{{ primeraMayuscula(opcion) }}</button>
-                    </router-link>
-                </div>
-            </q-drawer>
-
-            <q-page-container>
-                
-
-                <router-view />
-
-
-            </q-page-container>
-        </q-layout>
-    </div>
-</template>
-
 <style scoped>
-* {
-    margin: 0;
-    padding: 0;
-    font-size: large;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-        "Lucida Sans", Arial, sans-serif;
-    text-align: center;
-}
 
-.menudesplegable {
-    border: solid 2px black;
-}
-
-.menutitle {
-    font-size: 25px;
-    text-align: center;
-    font-weight: bold;
-    margin: 30px 0px;
-}
-
-.opcionescont {
-    background-color: white;
-    padding: 10px;
-    display: grid;
-    grid-column: 100%;
-    justify-content: left;
-}
-
-.opcion {
-    width: 100%;
-    padding: 5px;
-}
-
-.opcioncont {
-    margin: 20px;
-}
 </style>
