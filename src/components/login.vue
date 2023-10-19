@@ -5,7 +5,7 @@
       <img class="olaverde" src="../assets/olaverde.svg">
     </div>
 
-    <p class="tittle">BIENVENIDO</p>
+    <div class="tittle">BIENVENIDO</div>
     <p class="subtittle">Por favor ingrese sus datos de usuario para continuar, ¡te esperamos!</p>
     <input type="text" placeholder="Nombre de usuario">
     <div class="contrasenacont">
@@ -29,14 +29,17 @@ demas componentes  -->
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
   }
-  
-  .opcionescont{
-    background-color: white;
-    border: solid 2px black;
-    padding: 10px;
-    display: flex;
+
+  .tittle{
+    font-size: 128px;
+    font-weight: bolder;
   }
-  
+
+  .subtittle{
+    font-size: 28px;
+    font-weight: bold;
+    color: primary;
+  }
   .opcion{
     padding: 5px;
     margin: auto;

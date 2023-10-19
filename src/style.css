@@ -1,5 +1,9 @@
 *{
   margin: 0;
+  padding: 0;
+  font-size: large;
+  font-family:'inter';
+  text-align: center;
 }
 
 body{
