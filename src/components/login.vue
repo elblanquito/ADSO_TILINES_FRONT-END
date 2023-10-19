@@ -12,7 +12,9 @@
       <input type="text" placeholder="Contraseña">
       <p class="contrasenaayuda">¿olvidaste tu contraseña?</p>
     </div>
-    <button>Ingresar</button>
+    <router-link to="/home" class="opcioncont">
+      <button class="opcion">Ingresar</button>
+    </router-link>
   </div>
   
 </template>

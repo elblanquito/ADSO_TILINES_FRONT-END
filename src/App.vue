@@ -1,23 +1,5 @@
 <template>
   <div class="cont">
-    <div class="opcionescont">
-  <router-link to="/" class="opcioncont">
-    <button class="opcion">inicio</button>
-  </router-link>
-  <router-link to="/buses" class="opcioncont">
-    <button class="opcion">buses</button>
-  </router-link>
-  <router-link to="/usuarios" class="opcioncont">
-    <button class="opcion">usuarios</button>
-  </router-link>
-  <router-link to="/conductores" class="opcioncont">
-    <button class="opcion">conductores</button>
-  </router-link>
-  <router-link to="/rutas" class="opcioncont">
-    <button class="opcion">rutas</button>
-  </router-link>
- 
-  </div>
   <router-view></router-view>
   </div>
 </template>
