@@ -1,6 +1,6 @@
 <template>
     <q-layout view="hHh lpR fFf">
-        <q-header elevated class="bg-primary text-white">
+        <q-header elevated class="bg-secondary text-white">
             <q-toolbar>
                 <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
@@ -13,32 +13,32 @@
             </q-toolbar>
         </q-header>
 
-        <q-drawer color="secondary" v-model="leftDrawerOpen" side="left" behavior="mobile" elevated>
+        <q-drawer class="bg-secondary" v-model="leftDrawerOpen" side="left" behavior="mobile" elevated>
             <div class="q-pa-md q-gutter">
-                <div class="q-pa-md q-gutter-sm">
-                    <q-avatar color="orange-2" text-color="white" icon="face" style="font-size: 6em" />
+                <div class="q-pa-md q-gutter-sm" style="margin-top: 3em">
+                    <q-avatar color="white" text-color="primary" icon="face" style="font-size: 7em" />
                 </div>
                 <router-link to="/home" class="opcioncont" style="font-size: 2em">
-                    <q-btn no-caps align="left" color="secondary" icon-right="send" style="width: 95%">Cerrar Sesión </q-btn>
+                    <q-btn no-caps align="between" color="accent" text-color="primary" icon-right=">" style="width: 95%">Cerrar Sesión </q-btn>
                 </router-link>
-                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
-                    <q-btn align="left" color="secondary" icon-right="send" label="CAMBIAR NOMBRE" style="width: 95%" />
-                </router-link>
-                <q-linear-progress :value="progress" class="q-mt-md" />
                 <router-link to="/home" class="opcioncont" style="font-size: 2em">
-                    <q-btn align="left" color="secondary" icon-right="send" label="Presupuesto" style="width: 95%" />
+                    <q-btn no-caps align="between" color="accent" text-color="primary" icon-right="navigation" style="width: 95%">Cambiar nombre </q-btn>
                 </router-link>
-                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
-                    <q-btn align="left" color="secondary" icon-right="send" label="Inventarios" style="width: 95%" />
+                <q-linear-progress :value="progress" class="q-mt-md" color="primary" />
+                <router-link to="/home" class="opcioncont" style="font-size: 2em">
+                    <q-btn no-caps align="between" color="accent" text-color="primary" icon-right="send" label="Presupuesto" style="width: 95%" />
                 </router-link>
-                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
-                    <q-btn align="left" color="secondary" icon-right="send" label="Pedidos" style="width: 95%" />
+                <router-link to="/home" class="opcioncont" style="font-size: 2em">
+                    <q-btn no-caps align="between" color="accent" text-color="primary" icon-right="send" label="Inventarios" style="width: 95%" />
                 </router-link>
-                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
-                    <q-btn align="left" color="secondary" icon-right="send" label="Informes del sistema" style="width: 95%" />
+                <router-link to="/home" class="opcioncont" style="font-size: 2em">
+                    <q-btn no-caps align="between" color="accent" text-color="primary" icon-right="send" label="Pedidos" style="width: 95%" />
                 </router-link>
-                <router-link to="/home" class="opcioncont" style="font-size: 1.5em">
-                    <q-btn align="left" color="secondary" icon-right="send" label="Utilidades del sistema" style="width: 95%" />
+                <router-link to="/home" class="opcioncont" style="font-size: 2em">
+                    <q-btn no-caps align="between" color="accent" text-color="primary" icon-right="send" label="Informes del sistema" style="width: 95%" />
+                </router-link>
+                <router-link to="/home" class="opcioncont" style="font-size: 2em">
+                    <q-btn  no-caps align="between" color="accent" text-color="primary" icon-right="send" label="Utilidades del sistema" style="width: 95%" />
                 </router-link>
                 <q-linear-progress :value="progress" class="q-mt-md" />
 
