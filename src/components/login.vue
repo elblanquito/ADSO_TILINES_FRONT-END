@@ -4,17 +4,20 @@
       <img class="olaazul" src="../assets/olaazul.svg">
       <img class="olaverde" src="../assets/olaverde.svg">
     </div>
-
-    <div class="tittle">BIENVENIDO</div>
+    <div class="opcioncont">
+    <p class="tittle">BIENVENIDO</p>
     <p class="subtittle">Por favor ingrese sus datos de usuario para continuar, ¡te esperamos!</p>
-    <input class="input" type="text" placeholder="Nombre de usuario">
+    
+    
+    <input class="input opcion" type="text" placeholder="Nombre de usuario">
     <div class="contrasenacont">
-      <input class="input" type="text" placeholder="Contraseña">
+      <input class="input opcion" type="text" placeholder="Contraseña">
       <p class="contrasenaayuda">¿olvidaste tu contraseña?</p>
     </div>
-    <router-link to="/home" class="opcioncont">
-      <button class="opcion">Ingresar</button>
+    <router-link to="/home" class="ingresarcont">
+      <button class="ingresar opcion">Ingresar</button>
     </router-link>
+  </div>
   </div>
   
 </template>
@@ -23,17 +26,21 @@
 demas componentes  -->
 <style scoped>
 
+.paleta{
+  background-color: 
+#3F497F
+#29A19C
+#A3F7BF;
+}
+
   *{
     margin: 0;
     padding: 0;
-    font-size: large;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
   }
 
   .tittle{
     font-size: 128px;
-    font-weight: bolder;
+    font-weight: 700;
     color: #3F497F;
   }
 
@@ -41,24 +48,59 @@ demas componentes  -->
     font-size: 28px;
     font-weight: bold;
     color: #3F497F;
+    margin-bottom: 10px;
+  }
+
+  .opcioncont{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  }
+
+  .opcion{
+    width: 95vw;
+    max-width: 700px;
   }
 
   .input{
-
+    background-color: #29A19C;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: left;
+    padding: 20px 30px;
+    margin-top: 80px;
   }
-  .opcion{
-    font-size: 50px;
-    font-weight: bolder;
+
+
+input::placeholder {
+  color: rgb(255, 255, 255); 
+}
+
+.input:focus {
+  outline: solid  #A3F7BF ;
+  }
+
+.contrasenacont{
+  width: min-content;
+  margin: auto;
+}
+
+.contrasenaayuda{
+  text-align: right;
+}
+
+
+  .ingresar{
+    font-size: 36px;
+    font-weight: 700;
     padding: 10px 100px;
-    margin: auto;
     background-color: #3F497F;
     color: white;
     border-radius: 20px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
-  
-  .opcioncont{
-    margin: 100px;
+    margin-top: 80px;
   }
 
 .olascont{
