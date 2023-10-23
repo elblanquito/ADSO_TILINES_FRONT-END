@@ -5,121 +5,154 @@
       <img class="olaverde" src="../assets/olaverde.svg">
     </div>
     <div class="opcioncont">
-    <p class="tittle">BIENVENIDO</p>
-    <p class="subtittle">Por favor ingrese sus datos de usuario para continuar, ¡te esperamos!</p>
-    
-    
-    <input class="input opcion" type="text" placeholder="Nombre de usuario">
-    <div class="contrasenacont">
-      <input class="input opcion" type="text" placeholder="Contraseña">
-      <p class="contrasenaayuda">¿olvidaste tu contraseña?</p>
+      <p class="tittle">BIENVENIDO</p>
+      <p class="subtittle">Por favor ingrese sus datos de usuario para continuar, ¡te esperamos!</p>
+
+
+      <input class="input opcion" type="text" placeholder="Nombre de usuario">
+      <div class="contrasenacont">
+        <input class="input opcion" type="text" placeholder="Contraseña">
+        <p class="contrasenaayuda">¿olvidaste tu contraseña?</p>
+      </div>
+      <router-link to="/home" class="ingresarcont">
+        <button class="ingresar opcion">Ingresar</button>
+      </router-link>
     </div>
-    <router-link to="/home" class="ingresarcont">
-      <button class="ingresar opcion">Ingresar</button>
-    </router-link>
   </div>
-  </div>
-  
 </template>
 
 <!-- scoped sirve para evitar que los estilos afecte a los
 demas componentes  -->
 <style scoped>
-
-.paleta{
-  background-color: 
-#3F497F
-#29A19C
-#A3F7BF;
+.paleta {
+  background-color:
+    #3F497F #29A19C #A3F7BF;
 }
 
-  *{
-    margin: 0;
-    padding: 0;
-  }
+* {
+  margin: 0;
+  padding: 0;
+}
 
-  .tittle{
-    font-size: 128px;
-    font-weight: 700;
-    color: #3F497F;
-  }
 
-  .subtittle{
-    font-size: 28px;
-    font-weight: bold;
-    color: #3F497F;
-    margin-bottom: 10px;
-  }
 
-  .opcioncont{
-    position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
-  }
 
-  .opcion{
-    width: 95vw;
-    max-width: 700px;
-  }
+.tittle {
+  margin-top: 20px;
+  font-size: 100px;
+  font-weight: 700;
+  color: #3F497F;
+}
 
-  .input{
-    background-color: #29A19C;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 24px;
-    text-align: left;
-    padding: 20px 30px;
-    margin-top: 80px;
-  }
+
+
+.subtittle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3F497F;
+  margin-bottom: 10px;
+}
+
+
+
+.opcion {
+  width: 95vw;
+  max-width: 525px;
+}
+
+.input {
+  background-color: #29A19C;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  text-align: left;
+  padding: 15px 30px;
+  margin-top: 70px;
+}
+
 
 
 input::placeholder {
-  color: rgb(255, 255, 255); 
+  color: rgb(255, 255, 255);
 }
 
 .input:focus {
-  outline: solid  #A3F7BF ;
-  }
+  outline: solid #A3F7BF;
+}
 
-.contrasenacont{
+.contrasenacont {
   width: min-content;
   margin: auto;
 }
 
-.contrasenaayuda{
+.contrasenaayuda {
   text-align: right;
+  color: #29A19C;
+  font-weight: 700;
+  text-decoration-line: underline;
+  margin: 10px 0px;
 }
 
 
-  .ingresar{
-    font-size: 36px;
-    font-weight: 700;
-    padding: 10px 100px;
-    background-color: #3F497F;
-    color: white;
-    border-radius: 20px;
-    margin-top: 80px;
-  }
+.ingresar {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px 100px;
+  background-color: #3F497F;
+  color: white;
+  border-radius: 20px;
+  margin: 50px 0px;
+}
 
-.olascont{
+.olascont {
+  user-select: none;
   z-index: -1;
   Overflow: hidden;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   bottom: 0;
   right: 50%;
-  transform: translate(50%,0);
+  transform: translate(50%, 0);
 }
-.olaverde, .olaazul {
+
+.olaverde,.olaazul {
   position: absolute;
   width: 100vw;
   min-width: 1280px;
   bottom: 0;
   right: 50%;
-  transform: translate(50%,0);
+  transform: translate(50%, 0);
+}
+
+
+@media screen and (min-height: 850px ) {
+  .opcioncont {
+    margin-top: 5vh;
+  }
+}
+
+@media screen and (max-width: 640px ) {
+  .tittle {
+  font-size: 80px;
+  font-weight: 700;
+}
+}
+
+@media screen and (max-width: 500px ) {
+  .tittle {
+  font-size: 55px;
+  font-weight: 700;
+  }
+
+  .subtittle,.input,.contrasenaayuda {
+    font-size: 17px;
+  }
+
+  .ingresar{
+    font-size: 20px;
+    }
 }
 </style>
 
