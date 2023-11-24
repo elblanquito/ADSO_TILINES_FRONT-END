@@ -1,11 +1,11 @@
-import { createApp } from "vue";
-import "./style.css";
 import App from "./App.vue";
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import "./style.css";
 import { router } from "./routes/routes.js";
 import { Quasar, Dialog } from "quasar";
 import "@quasar/extras/material-icons/material-icons.css";
 import "quasar/src/css/index.sass";
-import { createPinia } from 'pinia'
 
 import axios from 'axios';
 //axios.defaults.baseURL = "https://transporte-el2a.onrender.com/api/";

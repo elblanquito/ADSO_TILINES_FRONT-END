@@ -1,14 +1,11 @@
 <template>
-  <div class="cont">====================tabla usuarios=====================</div>
+  <div class="cont">====================tabla presupuesto=====================</div>
 </template>
-
-
-
 
 <!-- scoped sirve para evitar que los estilos afecte a los
 demas componentes  -->
 <style scoped>
 .cont {
-  color: aqua;
+  color: rgb(221, 115, 89);
 }
 </style>
