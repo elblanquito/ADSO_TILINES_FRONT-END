@@ -1,158 +1,242 @@
+<script setup>
+  import { ref } from "vue";
+  import { useQuasar } from 'quasar'
+  import { useRouter } from "vue-router";
+  import { useUsuarioStore } from "../stores/usuario.js"
+  import Cookies from 'js-cookie'
+
+
+  const UsuarioStore = useUsuarioStore()
+  const router = useRouter()
+  
+const data = ref({
+  correo: "",
+  contrasena: "",
+});
+  const $q = useQuasar();
+  let errorMessage = ref("");
+    
+  const showDefault = () => {
+  notification = $q.notify({
+      spinner: true,
+      message: 'Please wait...',
+      timeout: 0 
+  });
+  };
+  
+  let validacion = ref(false);
+  let notification = ref(null);
+  let loading = ref(false)
+
+
+
+  function validarCampos() {
+  const arrData = Object.entries(data.value)
+  for (const d of arrData) {
+    if (d[1] === null) {
+      notificar('negative', 'Por favor complete todos los campos')
+      return
+    }
+    if(typeof d[1] === 'string'){if (d[1].trim() === "") {
+      notificar('negative','Por favor complete todos los campos')
+      return
+    }}
+  }
+
+  validarIngreso()
+}
+
+async function validarIngreso() {
+  try {
+    console.log("Esperando confirmación...");
+    loading.value = true;
+    const response = await UsuarioStore.login(data.value);
+    console.log(response);
+  
+    if(!response) return
+    
+    if (response.status != 200) {
+      notificar('negative', response.mensaje)
+      return;
+    }
+    notificar('positive', 'Sección exitosa')
+    // Enviar la respuesta del servidor como parámetros de la URL al redirigir a la página de inicio
+    router.push({ path: '/inicio'});
+  } catch (error) {
+    
+  }finally{
+    loading.value = false
+  }
+}
+
+
+
+
+/*       if (validacion.value==true) {
+          try {
+            showDefault()
+            const res = await loginStore.Login({
+                cuenta: username.value,
+                clave: password.value
+            });
+            console.log(res);
+            localStorage.setItem('token', res.data.token)
+            if(notification) {
+                notification()
+            }
+            $q.notify({
+                spinner: false, 
+                message: "Ingresado al programa", 
+                timeout: 2000,
+                type: 'positive',
+            });
+        } catch (error) {
+            if(notification) {
+                notification()
+            };
+            $q.notify({
+                spinner: false, 
+                message: `${error.response.data.msg}`, 
+                timeout: 2000,
+                type: 'negative',
+            });
+        };
+        }
+        
+        validacion.value = false   */
+
+
+
+
+    function notificar(tipo, msg) {
+  $q.notify({
+    type: tipo,
+    message: msg,
+    position: "top"
+  })
+}
+    </script>
+
+
+
+
 <template>
-  <div class="cont">
-    <div class="olascont">
-      <img class="olaazul" src="../assets/olaazul.svg">
-      <img class="olaverde" src="../assets/olaverde.svg">
-    </div>
-    <div class="opcioncont">
-      <p class="tittle">BIENVENIDO</p>
-      <p class="subtittle">Por favor ingrese sus datos de usuario para continuar, ¡te esperamos!</p>
+    <div class="cont">
+        <div class="olascont">
+            <img class="olaazul" src="../assets/olaazul.svg">
+            <img class="olaverde" src="../assets/olaverde.svg">
+        </div>
+            <q-card class="my-card q-ma-lg q-pa-md" >
+                <q-card-section>
+                    <q-div class="text-h3 text-primary text-bold">Bienvenido</q-div>
+                    <p class="subtittle text-primary" >Por favor ingrese sus datos de usuario para continuar</p>
+                </q-card-section>
+                <q-card-section>
+                    <q-input standout="bg-accent " v-model="data.correo" label="Correo electronico" />
+                </q-card-section>
+                <q-card-section>
+                    <q-input standout="bg-accent" v-model="data.contrasena" label="Contraseña" type="password"/>
+                    <router-link to="/Restableciemiento" class="ingresarcont">
+                        <p class="text-secondary text-weight-bold q-mt-md">¿Olvidaste tu contraseña?</p>
+                    </router-link>
 
+                    <q-card-section>
+                    </q-card-section>
+                    <q-btn push color="secondary" label="Ingresar" class="q-mt-lg" @click="validarCampos" :loading="loading"/>
+                </q-card-section>
 
-      <input class="input opcion" type="text" placeholder="Nombre de usuario">
-      <div class="contrasenacont">
-        <input class="input opcion" type="text" placeholder="Contraseña">
-        <p class="contrasenaayuda">¿olvidaste tu contraseña?</p>
-      </div>
-      <router-link to="/home" class="ingresarcont">
-        <button class="ingresar opcion">Ingresar</button>
-      </router-link>
-    </div>
-  </div>
+                        
+
+            </q-card>
+        </div>
 </template>
-
-<!-- scoped sirve para evitar que los estilos afecte a los
-demas componentes  -->
+    
+    <!-- scoped sirve para evitar que los estilos afecte a los
+    demas componentes  -->
 <style scoped>
 .paleta {
-  background-color:
-    #3F497F #29A19C #A3F7BF;
+    background-color:
+        #3F497F #29A19C #A3F7BF;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+}
+.my-card{
+    transform: translate(0px, -50px);
 }
 
-
-
-
-.tittle {
-  margin-top: 20px;
-  font-size: 100px;
-  font-weight: 700;
-  color: #3F497F;
-}
-
-
-
-.subtittle {
-  font-size: 20px;
-  font-weight: bold;
-  color: #3F497F;
-  margin-bottom: 10px;
-}
-
-
-
-.opcion {
-  width: 95vw;
-  max-width: 525px;
-}
-
-.input {
-  background-color: #29A19C;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 20px;
-  text-align: left;
-  padding: 15px 30px;
-  margin-top: 70px;
-}
-
-
-
-input::placeholder {
-  color: rgb(255, 255, 255);
-}
-
-.input:focus {
-  outline: solid #A3F7BF;
-}
-
-.contrasenacont {
-  width: min-content;
-  margin: auto;
-}
-
-.contrasenaayuda {
-  text-align: right;
-  color: #29A19C;
-  font-weight: 700;
-  text-decoration-line: underline;
-  margin: 10px 0px;
-}
-
-
-.ingresar {
-  font-size: 30px;
-  font-weight: 700;
-  padding: 10px 100px;
-  background-color: #3F497F;
-  color: white;
-  border-radius: 20px;
-  margin: 50px 0px;
+.cont {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
 }
 
 .olascont {
-  user-select: none;
-  z-index: -1;
-  Overflow: hidden;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  bottom: 0;
-  right: 50%;
-  transform: translate(50%, 0);
+    flex: 1;
 }
-
-.olaverde,.olaazul {
-  position: absolute;
-  width: 100vw;
-  min-width: 1280px;
-  bottom: 0;
-  right: 50%;
-  transform: translate(50%, 0);
-}
-
-
-@media screen and (min-height: 850px ) {
-  .opcioncont {
-    margin-top: 5vh;
-  }
-}
-
-@media screen and (max-width: 640px ) {
-  .tittle {
-  font-size: 80px;
-  font-weight: 700;
-}
-}
-
-@media screen and (max-width: 500px ) {
-  .tittle {
-  font-size: 55px;
-  font-weight: 700;
-  }
-
-  .subtittle,.input,.contrasenaayuda {
-    font-size: 17px;
-  }
-
-  .ingresar{
+.subtittle {
     font-size: 20px;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+
+input::placeholder {
+    color: rgb(255, 255, 255);
+}
+
+
+.contrasenaayuda {
+    text-align: right;
+    font-weight: 700;
+    text-decoration-line: underline;
+    margin: 10px 0px;
+}
+
+.olascont {
+    user-select: none;
+    z-index: -1;
+    Overflow: hidden;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    bottom: 0;
+    right: 50%;
+    transform: translate(50%, 0);
+}
+
+@media only screen and (min-width: 1200px) {
+    .olascont{
+        bottom: -2vw;
     }
 }
-</style>
 
+.olaverde,
+.olaazul {
+    position: absolute;
+    width: 100vw;
+    min-width: 980px;
+    bottom: 0;
+    right: 50%;
+    transform: translate(50%, 0);
+}
+
+
+.contrasenaayuda {
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.contrasenaayuda:hover {
+  color: var(--q-color-accent);
+}
+/* .contrasenaayuda:hover {
+    color: #29A19C;
+} */
+</style>
